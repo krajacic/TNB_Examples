@@ -15,6 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AddAndSubLayoutActivity"
+            android:label="AddAndSubLayout"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".GravityLayoutActivity"
+            android:label="GravityLayout"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
