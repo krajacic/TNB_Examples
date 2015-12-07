@@ -23,6 +23,10 @@
             android:label="GravityLayout"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".BgMusicLayoutActivity"
+            android:label="BgMusicLayout"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
