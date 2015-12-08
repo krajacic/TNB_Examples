@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button gravity_layout, add_and_sub_layout, bg_music_layout;
+    Button gravity_layout, add_and_sub_layout, bg_music_layout, visibility_layout;
 
 
 
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         gravity_layout = (Button) findViewById(R.id.gravity_button);
         add_and_sub_layout = (Button) findViewById(R.id.add_and_sub_button);
         bg_music_layout = (Button) findViewById(R.id.bg_music_button);
+        visibility_layout = (Button) findViewById(R.id.visibility_button);
 
         gravity_layout.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick (View v) {
                 startActivity(new Intent(MainActivity.this, BgMusicLayoutActivity.class));
+            }
+        });
+
+        visibility_layout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v) {
+                startActivity(new Intent(MainActivity.this, VisibilityLayoutActivity.class));
             }
         });
 

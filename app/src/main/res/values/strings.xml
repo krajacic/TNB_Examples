@@ -3,4 +3,5 @@
     <string name="relative_layout">RelativeLayout --> All that white space</string>
     <string name="linear_layout1">LinearLayout1</string>
     <string name="gravity_button">Gravity and Layout Gravity</string>
+    <string name="wonderful_world_lyrics">lyrics</string>
 </resources>

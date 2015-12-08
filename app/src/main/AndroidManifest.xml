@@ -27,6 +27,10 @@
             android:label="BgMusicLayout"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".VisibilityLayoutActivity"
+            android:label="VisibilityLayout"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
