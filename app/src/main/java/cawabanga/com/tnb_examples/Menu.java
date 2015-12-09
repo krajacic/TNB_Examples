@@ -12,7 +12,7 @@ import android.widget.ListView;
  */
 public class Menu extends ListActivity {
 
-    String classes[] = { "BgMusicLayoutActivity", "example1", "example2", "example3", "example4", "example5", "example6" };
+    String classes[] = { "BgMusicLayoutActivity", "TextActivity", "example2", "example3", "example4", "example5", "example6" };
 
 
 

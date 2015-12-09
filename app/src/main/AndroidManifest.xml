@@ -44,6 +44,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".TextActivity"
+            android:label="Menu"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 
