@@ -35,6 +35,16 @@
             android:label="VisibilityLayout"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity android:name=".Menu"
+            android:label="Menu"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="cawabanga.com.tnb_examples.MENU" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

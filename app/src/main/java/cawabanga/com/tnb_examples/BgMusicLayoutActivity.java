@@ -10,7 +10,7 @@ import android.view.View;
  */
 public class BgMusicLayoutActivity extends AppCompatActivity {
 
-    MediaPlayer mySound;
+    MediaPlayer mySound;  //we could use SoundPool but that class is for short clips like explosion or "click"
 
     @Override
     protected void onPause() {

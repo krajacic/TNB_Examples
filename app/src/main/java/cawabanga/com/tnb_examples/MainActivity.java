@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 } finally {
-                    Intent bgMusicIntent = new Intent("cawabanga.com.tnb_examples.BGMUSIC");
+                    Intent bgMusicIntent = new Intent("cawabanga.com.tnb_examples.MENU"); //inside of () MUST be the same name as action name in AndroidManifest.xml
                     startActivity(bgMusicIntent);
                 }
 
