@@ -26,6 +26,10 @@
         <activity android:name=".BgMusicLayoutActivity"
             android:label="BgMusicLayout"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="cawabanga.com.tnb_examples.BGMUSIC" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity android:name=".VisibilityLayoutActivity"
             android:label="VisibilityLayout"

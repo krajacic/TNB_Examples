@@ -52,6 +52,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Thread timer = new Thread(){
+            public void run(){
+                try {
+                    sleep(6000);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                } finally {
+                    Intent bgMusicIntent = new Intent("cawabanga.com.tnb_examples.BGMUSIC");
+                    startActivity(bgMusicIntent);
+                }
+
+            }
+
+        };
+        timer.start();
+
 
 
     }
