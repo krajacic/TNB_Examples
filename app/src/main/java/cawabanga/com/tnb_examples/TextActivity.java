@@ -47,7 +47,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.bResults:
+            case R.id.bResults: //That id is the same as chkCmd --> button findViewByID(R.id.bResults) and we got setOnClickListener on chkCmd
                 String check = input.getText().toString();
                 display.setText(check);
                 if (check.contentEquals("left")){
@@ -86,7 +86,7 @@ public class TextActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
 
-            case R.id.tbPassword:
+            case R.id.tbPassword: //That id is the same as passTog --> button findViewByID(R.id.tbPassword) and we got setOnClickListener on passTog
                 if (passTog.isChecked()){
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 }
