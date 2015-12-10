@@ -16,34 +16,38 @@ import java.util.Random;
 /**
  * Created by croatan on 9.12.2015..
  */
-public class TextActivity extends AppCompatActivity{
+public class TextActivity extends AppCompatActivity implements View.OnClickListener{
+
+    Button chkCmd;
+    ToggleButton passTog;
+    EditText input;
+    TextView display;
+    TextView caseDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
 
-        Button chkCmd = (Button)findViewById(R.id.bResults);
-        final ToggleButton passTog = (ToggleButton)findViewById(R.id.tbPassword);
-        final EditText input = (EditText) findViewById(R.id.etCommands);
-        final TextView display = (TextView) findViewById(R.id.tvResults);
-        final TextView caseDisplay = (TextView) findViewById(R.id.tvCase);
+        baconAndEggs(); //we create this method just to clear our code...initialization is on the bottom of code
+        passTog.setOnClickListener(this); //now we can type here "this" because it gonna look in class and look for View.OnClickListener Method Implement
+        chkCmd.setOnClickListener(this);
 
-        passTog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (passTog.isChecked()){
-                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                }
-                else {
-                    input.setInputType(InputType.TYPE_CLASS_TEXT);
-                }
-            }
-        });
 
-        chkCmd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
+
+    private void baconAndEggs() {
+        chkCmd = (Button)findViewById(R.id.bResults);
+        passTog = (ToggleButton)findViewById(R.id.tbPassword);
+        input = (EditText) findViewById(R.id.etCommands);
+        display = (TextView) findViewById(R.id.tvResults);
+        caseDisplay = (TextView) findViewById(R.id.tvCase);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.bResults:
                 String check = input.getText().toString();
                 display.setText(check);
                 if (check.contentEquals("left")){
@@ -58,9 +62,6 @@ public class TextActivity extends AppCompatActivity{
                     Random crazy = new Random();
                     int numberCase = crazy.nextInt(3);
                     String randomString = String.valueOf(numberCase); //That's how we convert int to string (random number)
-
-
-
                     display.setText("WTF!!!!");
                     display.setTextSize(crazy.nextInt(75));
                     display.setTextColor(Color.rgb(crazy.nextInt(265),crazy.nextInt(265),crazy.nextInt(265)));
@@ -83,9 +84,17 @@ public class TextActivity extends AppCompatActivity{
                     display.setGravity(Gravity.CENTER);
 
                 }
-            }
-        });
+                break;
 
+            case R.id.tbPassword:
+                if (passTog.isChecked()){
+                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+                else {
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                }
+                break;
 
+        }
     }
 }
