@@ -27,6 +27,7 @@ public class TextActivity extends AppCompatActivity{
         final ToggleButton passTog = (ToggleButton)findViewById(R.id.tbPassword);
         final EditText input = (EditText) findViewById(R.id.etCommands);
         final TextView display = (TextView) findViewById(R.id.tvResults);
+        final TextView caseDisplay = (TextView) findViewById(R.id.tvCase);
 
         passTog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,9 +56,28 @@ public class TextActivity extends AppCompatActivity{
                     display.setTextColor(Color.BLUE);
                 }else if(check.contains("WTF")){
                     Random crazy = new Random();
+                    int numberCase = crazy.nextInt(3);
+                    String randomString = String.valueOf(numberCase); //That's how we convert int to string (random number)
+
+
+
                     display.setText("WTF!!!!");
                     display.setTextSize(crazy.nextInt(75));
                     display.setTextColor(Color.rgb(crazy.nextInt(265),crazy.nextInt(265),crazy.nextInt(265)));
+                    switch (numberCase){
+                        case 0:
+                            display.setGravity(Gravity.LEFT);
+                            caseDisplay.setText(randomString);
+                            break;
+                        case 1:
+                            display.setGravity(Gravity.CENTER);
+                            caseDisplay.setText(randomString);
+                            break;
+                        case 2:
+                            display.setGravity(Gravity.RIGHT);
+                            caseDisplay.setText(randomString);
+                            break;
+                    }
                 }else{
                     display.setText("invalid");
                     display.setGravity(Gravity.CENTER);

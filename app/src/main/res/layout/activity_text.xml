@@ -44,4 +44,12 @@
         android:id="@+id/tvResults"
         android:paddingTop="20dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="case"
+        android:id="@+id/tvCase"
+        android:paddingTop="20dp"/>
+
 </LinearLayout>
