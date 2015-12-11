@@ -53,7 +53,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="Stupid Things that this Person does"
             android:id="@+id/textView4" />
 
         <EditText
@@ -65,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="What you want to do to this person:"
             android:id="@+id/textView5" />
 
         <EditText
@@ -77,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="Hateful Outro"
             android:id="@+id/textView6" />
 
         <EditText
@@ -100,7 +100,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="Send Email"
             android:id="@+id/bSentEmail" />
 
     </LinearLayout>

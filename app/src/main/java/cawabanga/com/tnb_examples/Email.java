@@ -3,7 +3,9 @@ package cawabanga.com.tnb_examples;
 /**
  * Created by croatan on 11.12.2015..
  */
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,8 +52,15 @@ public class Email extends Activity implements View.OnClickListener {
                 + hatefulAct
                 + ".  Welp, thats all I wanted to chit-chatter about, oh and"
                 + out
-                + ".  Oh also if you get bored you should check out www.mybringback.com"
+                + ".  Oh also if you get bored you should check out www.juricakrajacic.com"
                 + '\n' + "PS. I think I love you...   :(";
+
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, emailaddress);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "May the force be with you!");
+        emailIntent.setType("plain/text");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, message);
+        startActivity(emailIntent);
     }
 
     private void convertEditTextVarsIntoStringsAndYesThisIsAMethodWeCreated() {
