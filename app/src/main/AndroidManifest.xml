@@ -48,6 +48,10 @@
             android:label="Menu"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".Email"
+            android:label="Email"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 
