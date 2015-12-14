@@ -2,6 +2,7 @@ package cawabanga.com.tnb_examples;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by croatan on 11.12.2015..
@@ -29,6 +31,8 @@ public class Camera extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
         initialize();
+        InputStream is = getResources().openRawResource(R.drawable.color_backgound);
+        bmp = BitmapFactory.decodeStream(is);
     }
 
     private void initialize(){
