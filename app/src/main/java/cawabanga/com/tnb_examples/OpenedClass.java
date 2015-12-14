@@ -1,5 +1,6 @@
 package cawabanga.com.tnb_examples;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,9 +23,9 @@ public class OpenedClass extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
         initialize();
-        Bundle gotBasket = getIntent().getExtras();
-        gotBread = gotBasket.getString("key"); //key is file name that we set for bread variable from Data class
-        question.setText(gotBread);
+        //Bundle gotBasket = getIntent().getExtras();
+        //gotBread = gotBasket.getString("key"); //key is file name that we set for bread variable from Data class
+        //question.setText(gotBread);
     }
 
     private void initialize() {
@@ -38,7 +39,12 @@ public class OpenedClass extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-
+        Intent person = new Intent();
+        Bundle backpack = new Bundle();
+        backpack.putString("answer", setData);
+        person.putExtras(backpack);
+        setResult(RESULT_OK, person);
+        finish();
     }
 
     @Override
