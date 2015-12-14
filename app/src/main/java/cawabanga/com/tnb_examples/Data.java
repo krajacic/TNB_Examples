@@ -47,8 +47,14 @@ public class Data extends AppCompatActivity implements View.OnClickListener {
                 startActivity(a);
                 break;
             case R.id.bSAFR:
-
+                Intent i = new Intent(Data.this, OpenedClass.class);
+                startActivityForResult(i, 0);
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

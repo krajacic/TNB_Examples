@@ -15,7 +15,7 @@ public class OpenedClass extends AppCompatActivity implements View.OnClickListen
     TextView question, test;
     Button returnData;
     RadioGroup selectionList;
-    String gotBread;
+    String gotBread, setData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +45,15 @@ public class OpenedClass extends AppCompatActivity implements View.OnClickListen
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId){
             case R.id.rCrazy:
-
+                setData = "Probably right!";
                 break;
             case R.id.rSexy:
-
+                setData = "Definitely right!";
                 break;
             case R.id.rBoth:
-
+                setData = "Spot on!";
                 break;
         }
+        test.setText(setData);
     }
 }
