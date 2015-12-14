@@ -1,5 +1,6 @@
 package cawabanga.com.tnb_examples;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -36,6 +37,18 @@ public class Data extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.bSA:
+                String bread = sendET.getText().toString();
+                Bundle basket = new Bundle();
+                basket.putString("key", bread); //key is filename and bread is value
+                Intent a = new Intent(Data.this, OpenedClass.class);
+                a.putExtras(basket);
+                startActivity(a);
+                break;
+            case R.id.bSAFR:
 
+                break;
+        }
     }
 }
