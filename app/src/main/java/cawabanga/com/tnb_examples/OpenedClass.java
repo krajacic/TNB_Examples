@@ -15,12 +15,16 @@ public class OpenedClass extends AppCompatActivity implements View.OnClickListen
     TextView question, test;
     Button returnData;
     RadioGroup selectionList;
+    String gotBread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
         initialize();
+        Bundle gotBasket = getIntent().getExtras();
+        gotBread = gotBasket.getString("key"); //key is file name that we set for bread variable from Data class
+        question.setText(gotBread);
     }
 
     private void initialize() {
@@ -28,6 +32,7 @@ public class OpenedClass extends AppCompatActivity implements View.OnClickListen
         test = (TextView) findViewById(R.id.tvText);
         returnData = (Button) findViewById(R.id.bReturn);
         returnData.setOnClickListener(this);
+        selectionList = (RadioGroup) findViewById(R.id.rgAnswers);
         selectionList.setOnCheckedChangeListener(this);
     }
 

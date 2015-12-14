@@ -62,6 +62,10 @@
             android:label="Data"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".OpenedClass"
+            android:label="OpenedClass"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 
