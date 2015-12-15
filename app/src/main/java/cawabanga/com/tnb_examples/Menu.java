@@ -50,10 +50,15 @@ public class Menu extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.aboutUs:
-
+                Intent i = new Intent("cawabanga.com.tnb_examples.ABOUT");
+                startActivity(i);
                 break;
             case R.id.preferences:
-
+                Intent p = new Intent("cawabanga.com.tnb_examples.PREFS");
+                startActivity(p);
+                break;
+            case R.id.exit:
+                finish();
                 break;
         }
         return false;

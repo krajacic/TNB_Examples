@@ -66,6 +66,23 @@
             android:label="OpenedClass"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".AboutUs"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="AboutUs"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="cawabanga.com.tnb_examples.ABOUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Prefs"
+            android:label="Prefs"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="cawabanga.com.tnb_examples.PREFS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 
