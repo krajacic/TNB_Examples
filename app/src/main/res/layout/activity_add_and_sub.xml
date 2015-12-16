@@ -33,9 +33,8 @@
             android:id="@+id/add_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add one"
-            android:layout_gravity="center_horizontal"
-            android:textSize="30dp"/>
+            android:background="@drawable/custom"
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/sub_button"
