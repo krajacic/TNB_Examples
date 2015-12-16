@@ -82,6 +82,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".GFX"
+            android:label="GFX"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 
