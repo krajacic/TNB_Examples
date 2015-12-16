@@ -3,6 +3,8 @@ package cawabanga.com.tnb_examples;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.View;
 
 /**
@@ -16,6 +18,13 @@ public class MyBringBack extends View {
     public MyBringBack(Context context) {
         super(context);
 
-        gBall = BitmapFactory.decodeResource(getResources(), R.drawable.tennis_ball);
+        gBall = BitmapFactory.decodeResource(getResources(), R.drawable.ball);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        canvas.drawColor(Color.LTGRAY);
+        canvas.drawBitmap(gBall, (canvas.getWidth()/2), 0, null);
     }
 }
