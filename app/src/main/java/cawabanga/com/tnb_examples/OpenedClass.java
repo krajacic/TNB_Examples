@@ -1,7 +1,9 @@
 package cawabanga.com.tnb_examples;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +25,15 @@ public class OpenedClass extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
         initialize();
+
+        SharedPreferences getData = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String et = getData.getString("editTextKey", "Cawabanga is...");
+        String values = getData.getString("listKey", "4");
+        if (values.contentEquals("1")){
+            question.setText(et);
+        }
+
+
         //Bundle gotBasket = getIntent().getExtras();
         //gotBread = gotBasket.getString("key"); //key is file name that we set for bread variable from Data class
         //question.setText(gotBread);
