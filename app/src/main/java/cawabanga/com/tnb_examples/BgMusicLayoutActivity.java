@@ -1,7 +1,9 @@
 package cawabanga.com.tnb_examples;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -24,6 +26,12 @@ public class BgMusicLayoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bg_music);
 
         mySound = MediaPlayer.create(BgMusicLayoutActivity.this, R.raw.wonderful_world);
+        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        boolean music = getPrefs.getBoolean("checkBoxKey",true);
+        if (music == true){
+            mySound.start();
+        }
+
     }
 
     public void playMusic(View view){
