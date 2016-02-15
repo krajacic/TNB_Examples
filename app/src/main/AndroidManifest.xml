@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cawabanga.com.tnb_examples" >
 
-    <uses-permission android:name="android.permission.SET_WALLPAPER"></uses-permission>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
 
     <application
         android:allowBackup="true"
@@ -84,6 +84,10 @@
         </activity>
         <activity android:name=".GFX"
             android:label="GFX"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".GFXSurface"
+            android:label="GFXSurface"
             android:screenOrientation="portrait">
         </activity>
 

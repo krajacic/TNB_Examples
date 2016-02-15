@@ -12,11 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
- * Created by croatan on 9.12.2015..
+ * Created by croatan on 9.12.2015. TNB_Examples.
  */
 public class Menu extends ListActivity {
 
-    String classes[] = { "BgMusicLayoutActivity", "TextActivity", "Email", "Camera", "Data", "GFX", "example6" };
+    String classes[] = { "BgMusicLayoutActivity", "TextActivity", "Email", "Camera", "Data", "GFX", "GFXSurface" };
 
 
 
@@ -27,7 +27,7 @@ public class Menu extends ListActivity {
         //fullScreen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setListAdapter(new ArrayAdapter<String>(Menu.this, android.R.layout.simple_list_item_1, classes));
+        setListAdapter(new ArrayAdapter<>(Menu.this, android.R.layout.simple_list_item_1, classes));
 
     }
 
