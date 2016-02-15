@@ -11,11 +11,28 @@ import android.view.SurfaceView;
 public class MyBringBackSurface extends SurfaceView implements Runnable{
     SurfaceHolder ourHolder;
     Thread ourThread = null;
-    boolean isRunning = true;
+    boolean isRunning = false;
 
     public MyBringBackSurface(Context context){
         super(context);
         ourHolder = getHolder();
+    }
+
+    public void pause(){
+        isRunning = false;
+        while (true){
+            try {
+                ourThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            break;
+        }
+
+        ourThread = null;
+    }
+    public void resume(){
+        isRunning = true;
         ourThread = new Thread(this);
         ourThread.start();
     }
