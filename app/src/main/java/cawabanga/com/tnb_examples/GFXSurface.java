@@ -17,7 +17,8 @@ import android.view.View;
 public class GFXSurface extends AppCompatActivity implements View.OnTouchListener{
 
     MyBringBackSurface ourSurfaceView;
-    float x, y;
+    float x, y, sX, sY, fX, fY;
+    Bitmap test, plus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,12 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
         ourSurfaceView.setOnTouchListener(this);
         x = 0;
         y = 0;
+        sX = 0;
+        sY = 0;
+        fX = 0;
+        fY = 0;
+        test = BitmapFactory.decodeResource(getResources(), R.drawable.ball);
+        plus = BitmapFactory.decodeResource(getResources(), R.drawable.plus);
         setContentView(ourSurfaceView);
     }
 
@@ -45,6 +52,18 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
     public boolean onTouch(View v, MotionEvent event) {
         x = event.getX();
         y = event.getY();
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                sX = event.getX();
+                sY = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                fX = event.getX();
+                fY = event.getY();
+                break;
+        }
+
         return true; /* If is false, we can not drag our ball on canvas */
     }
 
@@ -86,9 +105,15 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
                 Canvas canvas = ourHolder.lockCanvas();
                 canvas.drawRGB(2, 2, 150);
                 if (x!=0 && y!=0){
-                    Bitmap test = BitmapFactory.decodeResource(getResources(), R.drawable.ball);
                     canvas.drawBitmap(test, x-(test.getWidth()/2), y-(test.getHeight()/2), null); /* We have added -BallWidht/2 because without that our ball will not be in center */
                 }
+                if (sX!=0 && sY!=0){
+                    canvas.drawBitmap(plus, sX-(plus.getWidth()/2), sY-(plus.getHeight()/2), null); /* We have added -BallWidht/2 because without that our ball will not be in center */
+                }
+                if (fX!=0 && fY!=0){
+                    canvas.drawBitmap(plus, fX-(plus.getWidth()/2), fY-(plus.getHeight()/2), null); /* We have added -BallWidht/2 because without that our ball will not be in center */
+                }
+
                 ourHolder.unlockCanvasAndPost(canvas);
             }
         }
