@@ -45,7 +45,7 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
     public boolean onTouch(View v, MotionEvent event) {
         x = event.getX();
         y = event.getY();
-        return false;
+        return true; /* If is false, we can not drag our ball on canvas */
     }
 
     public class MyBringBackSurface extends SurfaceView implements Runnable{
@@ -87,7 +87,7 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
                 canvas.drawRGB(2, 2, 150);
                 if (x!=0 && y!=0){
                     Bitmap test = BitmapFactory.decodeResource(getResources(), R.drawable.ball);
-                    canvas.drawBitmap(test, x, y, null);
+                    canvas.drawBitmap(test, x-(test.getWidth()/2), y-(test.getHeight()/2), null); /* We have added -BallWidht/2 because without that our ball will not be in center */
                 }
                 ourHolder.unlockCanvasAndPost(canvas);
             }
