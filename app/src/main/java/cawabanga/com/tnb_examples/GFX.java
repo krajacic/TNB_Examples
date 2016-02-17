@@ -1,19 +1,39 @@
 package cawabanga.com.tnb_examples;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 
 /**
  * Created by croatan on 16.12.2015..
  */
-public class GFX extends AppCompatActivity{
+public class GFX extends AppCompatActivity {
 
     MyBringBack ourView;
+    PowerManager.WakeLock wL;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //WakeLock
+        PowerManager pM = (PowerManager)getSystemService(Context.POWER_SERVICE);
+        //wL = pM.newWakeLock(getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON),"Wake Up");
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         super.onCreate(savedInstanceState);
+        wL.acquire();
         ourView = new MyBringBack(this);
         setContentView(ourView);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        wL.release();
     }
 }
