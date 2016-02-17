@@ -58,6 +58,7 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
             case MotionEvent.ACTION_DOWN:
                 sX = event.getX();
                 sY = event.getY();
+                dX = dY = aniX = aniY = scaledX = scaledY = fX = fY =0;
                 break;
             case MotionEvent.ACTION_UP:
                 fX = event.getX();
@@ -66,6 +67,8 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
                 dY = fY-sY;
                 scaledX = dX/30;
                 scaledY = dY/30;
+                x = 0;
+                y = 0;
                 break;
         }
 
@@ -116,7 +119,7 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
                     canvas.drawBitmap(plus, sX-(plus.getWidth()/2), sY-(plus.getHeight()/2), null); /* We have added -BallWidht/2 because without that our ball will not be in center */
                 }
                 if (fX!=0 && fY!=0){
-                    canvas.drawBitmap(test, x-(test.getWidth()/2)-aniX, y-(test.getHeight()/2)-aniY, null);
+                    canvas.drawBitmap(test, fX-(test.getWidth()/2)-aniX, fY-(test.getHeight()/2)-aniY, null);
                     canvas.drawBitmap(plus, fX-(plus.getWidth()/2), fY-(plus.getHeight()/2), null); /* We have added -BallWidht/2 because without that our ball will not be in center */
                 }
                 aniX = aniX+scaledX;
