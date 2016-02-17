@@ -51,6 +51,13 @@ public class GFXSurface extends AppCompatActivity implements View.OnTouchListene
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         x = event.getX();
         y = event.getY();
 
