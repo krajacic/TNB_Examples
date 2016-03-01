@@ -72,7 +72,12 @@ public class Tabs extends AppCompatActivity implements View.OnClickListener{
                 stop = System.currentTimeMillis();
                 if (start != 0){
                     long result = stop - start;
-                    showResults.setText(Long.toString(result));
+                    int millis = (int) result;
+                    int second = (int) result/1000;
+                    int minutes = second/60;
+                    millis = millis % 100;
+                    second = second % 60;
+                    showResults.setText(String.format("%d:%02d:%02d", minutes, second, millis));
                 }
             break;
         }
