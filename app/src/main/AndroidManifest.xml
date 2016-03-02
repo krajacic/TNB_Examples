@@ -109,6 +109,10 @@
             android:label="SimpleBrowser"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".SharedPrefs"
+            android:label="SharedPrefs"
+            android:screenOrientation="portrait">
+        </activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

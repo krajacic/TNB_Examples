@@ -38,13 +38,18 @@ public class SharedPrefs extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            //Saving Data
             case R.id.bSave:
                 String stringData = sharedData.getText().toString();
                 SharedPreferences.Editor editor = someData.edit();
                 editor.putString("sharedStringKey", stringData); // (key, value)
                 editor.commit();
                 break;
+            //Loading Data
             case R.id.bLoad:
+                someData = getSharedPreferences(filename, 0);
+                String dataReturned = someData.getString("sharedStringKey", "Couldn't Load Data"); //same key as on Save....putString Line 45
+                dataResults.setText(dataReturned);
                 break;
         }
     }
