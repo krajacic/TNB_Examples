@@ -1,8 +1,10 @@
 package cawabanga.com.tnb_examples;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -55,6 +57,9 @@ public class SimpleBrowser extends AppCompatActivity implements View.OnClickList
             case R.id.bGo:
                 String theWebsite = url.getText().toString();
                 ourBrowser.loadUrl(theWebsite);
+                //hiding the keyboard after using EditText (URL)
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(url.getWindowToken(), 0);
                 break;
             case R.id.bBack:
                 if (ourBrowser.canGoBack())
