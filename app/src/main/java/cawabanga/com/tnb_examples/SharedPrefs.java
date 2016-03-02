@@ -40,6 +40,9 @@ public class SharedPrefs extends AppCompatActivity implements View.OnClickListen
         switch (v.getId()){
             case R.id.bSave:
                 String stringData = sharedData.getText().toString();
+                SharedPreferences.Editor editor = someData.edit();
+                editor.putString("sharedStringKey", stringData); // (key, value)
+                editor.commit();
                 break;
             case R.id.bLoad:
                 break;
