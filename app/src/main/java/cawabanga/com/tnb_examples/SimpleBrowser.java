@@ -22,8 +22,19 @@ public class SimpleBrowser extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_simplebrowser);
 
         ourBrowser = (WebView) findViewById(R.id.wvBrowser);
-        ourBrowser.loadUrl("https://www.google.com");
+
+
+        ourBrowser.getSettings().setJavaScriptEnabled(true); //mostly for sites like YT
+        ourBrowser.getSettings().setLoadWithOverviewMode(true); //completely zoom out website
+        ourBrowser.getSettings().setUseWideViewPort(true);
         ourBrowser.setWebViewClient(new WebViewClient()); //To prevent opening website in other Browser like Chrome
+        try {
+            ourBrowser.loadUrl("https://www.google.com");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         Button go = (Button)findViewById(R.id.bGo);
         Button back = (Button)findViewById(R.id.bBack);
