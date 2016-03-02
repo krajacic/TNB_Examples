@@ -50,6 +50,25 @@ public class InternalData extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bSave:
+                String data = sharedData.getText().toString();
+                //Saving data via File
+                /*File f = new File(FILENAME);
+                try {
+                    fos = new FileOutputStream(f);
+                    //Write some data
+                    fos.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+                try {
+                    fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+                    fos.write(data.getBytes());
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 break;
             case R.id.bLoad:
