@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -72,7 +73,26 @@ public class InternalData extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.bLoad:
-
+                String collected = null; //all data that we read
+                FileInputStream fis = null;
+                try {
+                    fis = openFileInput(FILENAME);
+                    byte[] dataArray = new byte[fis.available()];
+                    while (fis.read(dataArray)!= -1){ //-1 means we read everything from fis
+                        collected = new String(dataArray);
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        fis.close();
+                        dataResults.setText(collected);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
         }
     }
