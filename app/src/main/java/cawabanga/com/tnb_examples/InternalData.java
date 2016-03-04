@@ -80,6 +80,11 @@ public class InternalData extends AppCompatActivity implements View.OnClickListe
     }
     public class loadSomeStuff extends AsyncTask<String, Integer, String>{
 
+        protected void onPreExecute(String f){
+            //example of setting up something
+            f = "whathever";
+        }
+
         @Override
         protected String doInBackground(String... params) {
             String collected = null; //all data that we read
@@ -104,5 +109,14 @@ public class InternalData extends AppCompatActivity implements View.OnClickListe
             }
             return null;
         }
+
+        protected void onProgressUpdated(Integer...progress) { //3 dots ... are same as [] array
+        }
+
+        protected void onPostExecute(String result){
+                dataResults.setText(result);
+            }
+
+
     }
 }
