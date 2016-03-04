@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,6 +44,7 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
         save = (Button) findViewById(R.id.bSaveFile);
         confirm.setOnClickListener(this);
         save.setOnClickListener(this);
+        saveFile = (EditText) findViewById(R.id.etSaveAs);
 
         checkState();
 
@@ -102,6 +104,9 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
                 file = new File(path, f);
                 checkState();
                 if (canW == canR == true){
+
+                    path.mkdirs(); //This thing will create directory if does not Exist already, IF exist it do nothing
+
                     try {
                         InputStream is = getResources().openRawResource(R.drawable.ball);
                         OutputStream os = new FileOutputStream(file);
@@ -110,6 +115,9 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
                         os.write(data);
                         is.close();
                         os.close();
+
+                        Toast t = Toast.makeText(ExternalData.this, "File has been saved.", Toast.LENGTH_LONG);
+                        t.show();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
