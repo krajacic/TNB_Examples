@@ -1,5 +1,7 @@
 package cawabanga.com.tnb_examples;
 
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -118,6 +120,16 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
 
                         Toast t = Toast.makeText(ExternalData.this, "File has been saved.", Toast.LENGTH_LONG);
                         t.show();
+
+                        //Update files for the user to use
+                        MediaScannerConnection.scanFile(ExternalData.this, new String[]{file.toString()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                            @Override
+                            public void onScanCompleted(String path, Uri uri) {
+                                Toast t = Toast.makeText(ExternalData.this, "Scan Completed", Toast.LENGTH_SHORT);
+                                t.show();
+                            }
+                        });
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
