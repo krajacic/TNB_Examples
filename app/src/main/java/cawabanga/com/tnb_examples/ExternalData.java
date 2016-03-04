@@ -12,6 +12,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Created by croatan on 4.3.2016. TNB_Examples.
@@ -24,6 +29,7 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinner;
     String[] paths = {"Music", "Pictures", "Downloads"}; //Options where we can save our datas
     File path = null;
+    File file = null;
     EditText saveFile;
     Button confirm, save;
 
@@ -37,6 +43,17 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
         save = (Button) findViewById(R.id.bSaveFile);
         confirm.setOnClickListener(this);
         save.setOnClickListener(this);
+
+        checkState();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ExternalData.this, android.R.layout.simple_spinner_item, paths); //parameters (Context, type of spinner, string Array)
+
+        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+
+    private void checkState() {
         state = Environment.getExternalStorageState();
         if (state.equals(Environment.MEDIA_MOUNTED )){
             //Media mounted means that we can read and write
@@ -54,12 +71,6 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
             canWrite.setText("false");
             canW = canR = false;
         }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ExternalData.this, android.R.layout.simple_spinner_item, paths); //parameters (Context, type of spinner, string Array)
-
-        spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -87,6 +98,24 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bSaveFile:
+                String f = saveFile.getText().toString();
+                file = new File(path, f);
+                checkState();
+                if (canW == canR == true){
+                    try {
+                        InputStream is = getResources().openRawResource(R.drawable.ball);
+                        OutputStream os = new FileOutputStream(file);
+                        byte[] data = new byte[is.available()];
+                        is.read(data);
+                        os.write(data);
+                        is.close();
+                        os.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case R.id.bConfirmSaveAs:
                 save.setVisibility(View.VISIBLE);
