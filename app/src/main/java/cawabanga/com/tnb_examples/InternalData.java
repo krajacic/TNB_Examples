@@ -1,5 +1,6 @@
 package cawabanga.com.tnb_examples;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -80,19 +81,35 @@ public class InternalData extends AppCompatActivity implements View.OnClickListe
     }
     public class loadSomeStuff extends AsyncTask<String, Integer, String>{
 
-        protected void onPreExecute(String f){
+        ProgressDialog dialog;
+
+        protected void onPreExecute(){
             //example of setting up something
-            f = "whathever";
+            dialog = new ProgressDialog(InternalData.this);
+            dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            dialog.setMax(100);
+            dialog.show();
         }
 
         @Override
         protected String doInBackground(String... params) {
             String collected = null; //all data that we read
             FileInputStream fis = null;
+
+            for (int i=0; i<20; i++){
+                publishProgress(5);
+                try {
+                    Thread.sleep(88); //this will make 'system' sleep/wait 88millis until increment by 1 (i++)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            dialog.dismiss(); //this will close dialog
+
             try {
                 fis = openFileInput(FILENAME);
                 byte[] dataArray = new byte[fis.available()];
-                while (fis.read(dataArray)!= -1){ //-1 means we read everything from fis
+                fis.read(dataArray);{ //-1 means we read everything from fis
                     collected = new String(dataArray);
                 }
             } catch (FileNotFoundException e) {
@@ -110,7 +127,8 @@ public class InternalData extends AppCompatActivity implements View.OnClickListe
             return null;
         }
 
-        protected void onProgressUpdated(Integer...progress) { //3 dots ... are same as [] array
+        protected void onProgressUpdate(Integer...progress) { //3 dots ... are same as [] array
+            dialog.incrementProgressBy(progress[0]);
         }
 
         protected void onPostExecute(String result){
