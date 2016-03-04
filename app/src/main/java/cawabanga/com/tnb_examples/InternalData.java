@@ -1,6 +1,7 @@
 package cawabanga.com.tnb_examples;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -73,27 +74,35 @@ public class InternalData extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.bLoad:
-                String collected = null; //all data that we read
-                FileInputStream fis = null;
+                new loadSomeStuff().execute(FILENAME);
+                break;
+        }
+    }
+    public class loadSomeStuff extends AsyncTask<String, Integer, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            String collected = null; //all data that we read
+            FileInputStream fis = null;
+            try {
+                fis = openFileInput(FILENAME);
+                byte[] dataArray = new byte[fis.available()];
+                while (fis.read(dataArray)!= -1){ //-1 means we read everything from fis
+                    collected = new String(dataArray);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
                 try {
-                    fis = openFileInput(FILENAME);
-                    byte[] dataArray = new byte[fis.available()];
-                    while (fis.read(dataArray)!= -1){ //-1 means we read everything from fis
-                        collected = new String(dataArray);
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                    fis.close();
+                    return collected;
                 } catch (IOException e) {
                     e.printStackTrace();
-                } finally {
-                    try {
-                        fis.close();
-                        dataResults.setText(collected);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                 }
-                break;
+            }
+            return null;
         }
     }
 }
