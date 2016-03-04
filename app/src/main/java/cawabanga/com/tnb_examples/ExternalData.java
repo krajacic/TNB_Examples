@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -14,7 +16,7 @@ import java.io.File;
 /**
  * Created by croatan on 4.3.2016. TNB_Examples.
  */
-public class ExternalData extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class ExternalData extends AppCompatActivity implements AdapterView.OnItemSelectedListener , View.OnClickListener{
 
     private TextView canWrite, canRead;
     private String state;
@@ -22,7 +24,8 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinner;
     String[] paths = {"Music", "Pictures", "Downloads"}; //Options where we can save our datas
     File path = null;
-
+    EditText saveFile;
+    Button confirm, save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,10 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_externaldata);
         canWrite = (TextView)findViewById(R.id.tvCanWrite);
         canRead = (TextView)findViewById(R.id.tvCanRead);
+        confirm = (Button) findViewById(R.id.bConfirmSaveAs);
+        save = (Button) findViewById(R.id.bSaveFile);
+        confirm.setOnClickListener(this);
+        save.setOnClickListener(this);
         state = Environment.getExternalStorageState();
         if (state.equals(Environment.MEDIA_MOUNTED )){
             //Media mounted means that we can read and write
@@ -57,8 +64,8 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        int position = spinner.getSelectedItemPosition();
-        switch (position){
+        int positionN = spinner.getSelectedItemPosition();
+        switch (positionN){
             case 0:
                 path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
                 break;
@@ -73,6 +80,18 @@ public class ExternalData extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.bSaveFile:
+                break;
+            case R.id.bConfirmSaveAs:
+                save.setVisibility(View.VISIBLE);
+                break;
+        }
 
     }
 }
