@@ -3,20 +3,25 @@ package cawabanga.com.tnb_examples;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.File;
+
 /**
  * Created by croatan on 4.3.2016. TNB_Examples.
  */
-public class ExternalData extends AppCompatActivity {
+public class ExternalData extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private TextView canWrite, canRead;
     private String state;
     boolean canW, canR;
     Spinner spinner;
     String[] paths = {"Music", "Pictures", "Downloads"}; //Options where we can save our datas
+    File path = null;
 
 
     @Override
@@ -47,5 +52,27 @@ public class ExternalData extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        int position = spinner.getSelectedItemPosition();
+        switch (position){
+            case 0:
+                path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+                break;
+            case 1:
+                path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                break;
+            case 2:
+                path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
