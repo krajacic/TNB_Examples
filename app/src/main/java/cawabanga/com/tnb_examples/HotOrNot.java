@@ -22,7 +22,7 @@ public class HotOrNot {
     private final Context ourContext;
     private SQLiteDatabase ourDatabase;
 
-    private static class DbHelper extends SQLiteOpenHelper{
+    private static class DbHelper extends SQLiteOpenHelper {
 
         public DbHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -30,7 +30,11 @@ public class HotOrNot {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-
+            db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" +
+                            KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            KEY_NAME + " TEXT NOT NULL, " +
+                            KEY_HOTNESS + " TEXT NOT NULL);"
+            );
         }
 
         @Override
@@ -39,7 +43,7 @@ public class HotOrNot {
         }
     }
 
-    public HotOrNot(Context c){
+    public HotOrNot(Context c) {
         ourContext = c;
     }
 
