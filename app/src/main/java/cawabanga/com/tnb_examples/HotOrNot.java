@@ -39,12 +39,19 @@ public class HotOrNot {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+            onCreate(db);
         }
     }
 
     public HotOrNot(Context c) {
         ourContext = c;
+    }
+
+    public HotOrNot open(){
+        ourHelper = new DbHelper(ourContext);
+        ourDatabase = ourHelper.getWritableDatabase();
+        return this;
     }
 
 }
