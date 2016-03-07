@@ -44,6 +44,13 @@ public class SQLiteExample extends AppCompatActivity implements View.OnClickList
                     entry.close();
                 }catch (Exception e){
                     didItWork = false;
+                    String error = e.toString();
+                    Dialog d = new Dialog(this);
+                    d.setTitle(":'(");
+                    TextView tv = new TextView(this);
+                    tv.setText(error);
+                    d.setContentView(tv);
+                    d.show();
                 }finally {
                     if (didItWork){
                         Dialog d = new Dialog(this);
