@@ -22,15 +22,21 @@ public class SQLiteExample extends AppCompatActivity implements View.OnClickList
         sqlHotness = (EditText) findViewById(R.id.etSQLHotness);
         sqlUpdate = (Button) findViewById(R.id.bSQLUpdate);
         sqlView = (Button) findViewById(R.id.bSQLopenView);
-
         sqlUpdate.setOnClickListener(this);
         sqlView.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.bSQLUpdate:
+                String name = sqlName.getText().toString();
+                String hotness = sqlHotness.getText().toString();
+
+                HotOrNot entry = new HotOrNot(SQLiteExample.this);
+                entry.open();
+                entry.createEntry(name, hotness);
+                entry.close();
                 break;
             case R.id.bSQLopenView:
                 break;

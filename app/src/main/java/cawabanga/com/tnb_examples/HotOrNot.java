@@ -22,6 +22,9 @@ public class HotOrNot {
     private final Context ourContext;
     private SQLiteDatabase ourDatabase;
 
+    public void createEntry(String name, String hotness) {
+    }
+
     private static class DbHelper extends SQLiteOpenHelper {
 
         public DbHelper(Context context) {
@@ -52,6 +55,10 @@ public class HotOrNot {
         ourHelper = new DbHelper(ourContext);
         ourDatabase = ourHelper.getWritableDatabase();
         return this;
+    }
+
+    public void close(){
+        ourHelper.close();
     }
 
 }
