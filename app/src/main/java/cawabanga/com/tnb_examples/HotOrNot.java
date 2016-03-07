@@ -106,4 +106,11 @@ public class HotOrNot {
         return null;
     }
 
+    public void updateEntry(long lRow, String mName, String mHotness) {
+        ContentValues cvUpdate = new ContentValues();
+        cvUpdate.put(KEY_NAME, mName);
+        cvUpdate.put(KEY_HOTNESS, mHotness);
+        ourDatabase.update(DATABASE_TABLE, cvUpdate, KEY_ROWID + "=" + lRow, null);
+    }
+
 }
