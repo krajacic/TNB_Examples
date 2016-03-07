@@ -1,5 +1,6 @@
 package cawabanga.com.tnb_examples;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -21,9 +22,6 @@ public class HotOrNot {
     private DbHelper ourHelper;
     private final Context ourContext;
     private SQLiteDatabase ourDatabase;
-
-    public void createEntry(String name, String hotness) {
-    }
 
     private static class DbHelper extends SQLiteOpenHelper {
 
@@ -59,6 +57,13 @@ public class HotOrNot {
 
     public void close(){
         ourHelper.close();
+    }
+
+    public long createEntry(String name, String hotness) {
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_NAME, name);
+        cv.put(KEY_HOTNESS, hotness);
+        return ourDatabase.insert(DATABASE_TABLE, null, cv);
     }
 
 }
