@@ -2,6 +2,7 @@ package cawabanga.com.tnb_examples;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -51,13 +52,13 @@ public class HotOrNot {
         ourContext = c;
     }
 
-    public HotOrNot open() throws SQLException{
+    public HotOrNot open() throws SQLException {
         ourHelper = new DbHelper(ourContext);
         ourDatabase = ourHelper.getWritableDatabase();
         return this;
     }
 
-    public void close(){
+    public void close() {
         ourHelper.close();
     }
 
@@ -70,7 +71,17 @@ public class HotOrNot {
 
     public String getData() {
         String[] columns = new String[]{KEY_ROWID, KEY_NAME, KEY_HOTNESS};
-        return null;
+        Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
+        String result = "";
+
+        int iRow = c.getColumnIndex(KEY_ROWID);
+        int iName = c.getColumnIndex(KEY_NAME);
+        int iHotness = c.getColumnIndex(KEY_HOTNESS);
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+            result = result + c.getString(iRow) + " " + c.getString(iName) + " " + c.getString(iHotness) + "\n";
+        }
+        return result;
     }
 
 }
