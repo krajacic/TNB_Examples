@@ -122,6 +122,18 @@
             android:label="ExternalData"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".SQLiteExample"
+            android:label="SQLiteExample"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".SQLView"
+            android:label="SQLView"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="cawabanga.com.tnb_examples.SQLVIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

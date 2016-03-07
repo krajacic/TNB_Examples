@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.SQLException;
+
 /**
  * Created by croatan on 5.3.2016. TNB_Examples.
  */
@@ -49,7 +51,7 @@ public class HotOrNot {
         ourContext = c;
     }
 
-    public HotOrNot open(){
+    public HotOrNot open() throws SQLException{
         ourHelper = new DbHelper(ourContext);
         ourDatabase = ourHelper.getWritableDatabase();
         return this;
