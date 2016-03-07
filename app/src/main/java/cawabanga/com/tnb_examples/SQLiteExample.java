@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.sql.SQLException;
+
 /**
  * Created by croatan on 5.3.2016. TNB_Examples.
  */
@@ -80,7 +82,11 @@ public class SQLiteExample extends AppCompatActivity implements View.OnClickList
                 String s = sqlRow.getText().toString();
                 long l = Long.parseLong(s);
                 HotOrNot hon = new HotOrNot(this);
-                hon.open();
+                try {
+                    hon.open();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 String returnedName = hon.getName(l);
                 String returnedHotness = hon.getHotness(l);
                 hon.close();

@@ -74,14 +74,36 @@ public class HotOrNot {
         Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
         String result = "";
 
-        int iRow = c.getColumnIndex(KEY_ROWID);
-        int iName = c.getColumnIndex(KEY_NAME);
-        int iHotness = c.getColumnIndex(KEY_HOTNESS);
+        int iRow = c.getColumnIndex(KEY_ROWID); //position 0
+        int iName = c.getColumnIndex(KEY_NAME); //position 1
+        int iHotness = c.getColumnIndex(KEY_HOTNESS); //position 2
 
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
             result = result + c.getString(iRow) + " " + c.getString(iName) + " " + c.getString(iHotness) + "\n";
         }
         return result;
+    }
+
+    public String getName(long l) {
+        String[] columns = new String[]{KEY_ROWID, KEY_NAME, KEY_HOTNESS};
+        Cursor c = ourDatabase.query(DATABASE_TABLE, columns, KEY_ROWID + "=" + l, null, null, null, null);
+        if (c != null){
+            c.moveToFirst();
+            String name = c.getString(1); //position 1 Line 78
+            return name;
+        }
+        return null;
+    }
+
+    public String getHotness(long l) {
+        String[] columns = new String[]{KEY_ROWID, KEY_NAME, KEY_HOTNESS};
+        Cursor c = ourDatabase.query(DATABASE_TABLE, columns, KEY_ROWID + "=" + l, null, null, null, null);
+        if (c != null){
+            c.moveToFirst();
+            String hotness = c.getString(2); //position 2 Line 79
+            return hotness;
+        }
+        return null;
     }
 
 }
