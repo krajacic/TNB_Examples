@@ -1,6 +1,8 @@
 package cawabanga.com.tnb_examples;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -15,6 +17,9 @@ import android.view.SurfaceView;
  * Created by croatan on 7.3.2016. TNB_Examples.
  */
 public class Accelerate extends AppCompatActivity implements SensorEventListener {
+
+    float x, y, sensorX, sensorY;
+    Bitmap ball;
 
     public class MyBringBackSurface extends SurfaceView implements Runnable{
         SurfaceHolder ourHolder;
@@ -68,6 +73,9 @@ public class Accelerate extends AppCompatActivity implements SensorEventListener
             Sensor s = sm.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
             sm.registerListener(this, s, SensorManager.SENSOR_DELAY_NORMAL);
         }
+
+        ball = BitmapFactory.decodeResource(getResources(), R.drawable.ball); //setup bitmap
+        x = y = sensorY = sensorX = 0;
     }
 
     @Override
@@ -77,6 +85,12 @@ public class Accelerate extends AppCompatActivity implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-
+        try {
+            Thread.sleep(16); //so sensor does not react on little changes
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        sensorX = event.values[0];
+        sensorY = event.values[1];
     }
 }
