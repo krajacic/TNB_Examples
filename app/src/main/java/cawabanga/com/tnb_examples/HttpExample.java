@@ -1,5 +1,6 @@
 package cawabanga.com.tnb_examples;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ public class HttpExample extends AppCompatActivity {
     TextView httpStuff;
     HttpClient client;
 
-    final static String URL = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+    final static String URL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class HttpExample extends AppCompatActivity {
 
     public JSONObject lastTweet(String username) throws ClientProtocolException, IOException, JSONException{
         StringBuilder url = new StringBuilder(URL);
+        url.append(username);
 
         HttpGet get = new HttpGet(url.toString());
         HttpResponse r = client.execute(get);
@@ -54,4 +56,18 @@ public class HttpExample extends AppCompatActivity {
             return null;
         }
     }
+
+    public class Read extends AsyncTask<String, Integer, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }
+
 }
