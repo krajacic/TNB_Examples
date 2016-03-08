@@ -1,7 +1,14 @@
 package cawabanga.com.tnb_examples;
 
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.BufferedReader;
-import java.nio.Buffer;
+import java.io.InputStreamReader;
+import java.net.URI;
+
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.methods.HttpGet;
 
 /**
  * Created by croatan on 8.3.2016. TNB_Examples.
@@ -12,7 +19,14 @@ public class GetMethodEx {
         BufferedReader in = null;
         String data = null;
         try {
-            HttpClient client = new DefaultHttpClient();
+            HttpClient client = (HttpClient) new DefaultHttpClient();
+            URI website = new URI ("http://www.mybringback.com");
+            HttpGet request = new HttpGet();
+            request.setURI(website);
+            HttpResponse response = client.execute(request);
+            in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+
         }
     }
 
