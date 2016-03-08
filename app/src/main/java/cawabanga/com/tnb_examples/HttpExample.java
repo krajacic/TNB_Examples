@@ -27,6 +27,7 @@ public class HttpExample extends AppCompatActivity {
 
     TextView httpStuff;
     HttpClient client;
+    JSONObject json;
 
     final static String URL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=";
 
@@ -36,6 +37,7 @@ public class HttpExample extends AppCompatActivity {
         setContentView(R.layout.activity_httpexample);
         httpStuff = (TextView) findViewById(R.id.tvHttp);
         client = (HttpClient) new DefaultHttpClient();
+        new Read().execute("text");
     }
 
     public JSONObject lastTweet(String username) throws ClientProtocolException, IOException, JSONException{
@@ -61,12 +63,21 @@ public class HttpExample extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
+            try {
+                json = lastTweet("Croatan315");
+                return json.getString(params[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             return null;
         }
 
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+            httpStuff.setText(s);
         }
     }
 
