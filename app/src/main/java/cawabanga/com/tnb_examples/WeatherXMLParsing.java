@@ -12,9 +12,9 @@ import android.widget.TextView;
  */
 public class WeatherXMLParsing extends AppCompatActivity implements View.OnClickListener {
 
-    String URL = "http://www.google.com/ig/api?weather=";
+    static final String baseURL = "http://api.openweathermap.org/data/2.5/weather?q=";
     TextView tv;
-    EditText city, state;
+    EditText city, country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,18 @@ public class WeatherXMLParsing extends AppCompatActivity implements View.OnClick
         Button b = (Button) findViewById(R.id.bWeather);
         tv = (TextView) findViewById(R.id.tvWeather);
         city = (EditText) findViewById(R.id.etCity);
-        state = (EditText) findViewById(R.id.etState);
+        country = (EditText) findViewById(R.id.etCountry);
     }
 
     @Override
     public void onClick(View v) {
+        String cty = city.getText().toString();
+        String cnt = country.getText().toString();
+
+        StringBuilder URL = new StringBuilder(baseURL);
+        URL.append(cty + "," + cnt + "&appid=44db6a862fba0b067b1930da0d769e98");
+        String fullUrl = URL.toString();
+
 
     }
 }
