@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cawabanga.com.tnb_examples" >
+    package="cawabanga.com.tnb_examples">
 
-    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddAndSubLayoutActivity"
+        <activity
+            android:name=".AddAndSubLayoutActivity"
             android:label="AddAndSubLayout"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".GravityLayoutActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".GravityLayoutActivity"
             android:label="GravityLayout"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".BgMusicLayoutActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".BgMusicLayoutActivity"
             android:label="BgMusicLayout">
             <intent-filter>
                 <action android:name="cawabanga.com.tnb_examples.BGMUSIC" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".VisibilityLayoutActivity"
+        <activity
+            android:name=".VisibilityLayoutActivity"
             android:label="VisibilityLayout"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
-        <activity android:name=".Menu"
+        <activity
+            android:name=".Menu"
             android:label="Menu"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -48,36 +50,38 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".TextActivity"
+        <activity
+            android:name=".TextActivity"
             android:label="Menu"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Email"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Email"
             android:label="Email"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Camera"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Camera"
             android:label="Camera"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Data"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Data"
             android:label="Data"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".OpenedClass"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".OpenedClass"
             android:label="OpenedClass"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".AboutUs"
-            android:theme="@android:style/Theme.Dialog"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".AboutUs"
             android:label="AboutUs"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog">
             <intent-filter>
                 <action android:name="cawabanga.com.tnb_examples.ABOUT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Prefs"
+        <activity
+            android:name=".Prefs"
             android:label="Prefs"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -85,48 +89,49 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".GFX"
+        <activity
+            android:name=".GFX"
             android:label="GFX"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".GFXSurface"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".GFXSurface"
             android:label="GFXSurface"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".SoundStuff"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SoundStuff"
             android:label="SoundStuff"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
-        <activity android:name=".Slider"
+        <activity
+            android:name=".Slider"
             android:label="Slider"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Tabs"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Tabs"
             android:label="Tabs"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".SimpleBrowser"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SimpleBrowser"
             android:label="SimpleBrowser"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".SharedPrefs"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SharedPrefs"
             android:label="SharedPrefs"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".InternalData"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".InternalData"
             android:label="InternalData"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".ExternalData"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ExternalData"
             android:label="ExternalData"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".SQLiteExample"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SQLiteExample"
             android:label="SQLiteExample"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".SQLView"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SQLView"
             android:label="SQLView"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -134,10 +139,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Accelerate"
+        <activity
+            android:name=".Accelerate"
             android:label="Accelerate"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".HttpExample"
+            android:label="HttpExample"
+            android:screenOrientation="portrait"></activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
